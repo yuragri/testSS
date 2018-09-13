@@ -24,7 +24,7 @@ const size_t & NameScore::GetAlphabeticScore() const
 
 void NameScore::ComputeAlphabeticScore()
 {
-	for (int i = 0; i < _name.length(); i++)
+	for (size_t i = 0; i < _name.length(); i++)
 	{
 		_alphabeticScore += std::tolower(_name[i]) - 96; //a in ascii table is 97
 	}

@@ -29,6 +29,7 @@ void ScoreContainer::ReadNamesFromFile(std::string & path)
 			fin.close();
 			return;
 		}
+		//read word by word
 		size_t count = 0;
 		std::string name = "";
 		while (!fin.eof())
@@ -41,7 +42,7 @@ void ScoreContainer::ReadNamesFromFile(std::string & path)
 		}
 		_computed = false;
 
-		std::cout << "Added " << count << " names to the list from the file." << std::endl;
+		std::cout << "Added " << count << " names from the file to the list." << std::endl;
 		fin.close();
 	}
 	catch (const std::ifstream::failure & ex)
@@ -60,6 +61,7 @@ bool ScoreContainer::AddName(std::string name)
 	}
 	_names.push_back(NameScore(name));
 	_computed = false;
+	std::cout << name << " was added to the list." << std::endl;
 	return true;
 }
 
@@ -130,7 +132,8 @@ void ScoreContainer::ClearNames()
 	std::cout << "Cleared the list." << std::endl;
 }
 
-std::string str_tolower(std::string s) {
+std::string ScoreContainer::NameToLower(std::string s)
+{
 	std::transform(s.begin(), s.end(), s.begin(),
 		[](unsigned char c) { return std::tolower(c); }
 	);
@@ -144,15 +147,15 @@ void ScoreContainer::AlphabeticSort()
 		return;
 	}
 	
-	std::sort(_names.begin(), _names.end(), [](NameScore& a, NameScore& b)
+	std::sort(_names.begin(), _names.end(), [=](NameScore& a, NameScore& b)
 	{
-		return str_tolower(a.GetName()) < str_tolower(b.GetName());
+		return NameToLower(a.GetName()) < NameToLower(b.GetName());
 	});
 }
 
 bool ScoreContainer::IsLetters(std::string name)
 {
-	for (int i = 0; i < name.size(); i++)
+	for (size_t i = 0; i < name.size(); i++)
 	{
 		int letter = std::tolower(name[i]);
 		if (letter < 'a' || letter > 'z')

@@ -16,7 +16,7 @@ public:
 	void PrintList();
 	void ClearNames();
 private:
-	//container for names
+	//container for names(possible to add more containers)
 	std::vector<NameScore>		_names;
 	//general score
 	size_t						_allScores;
@@ -24,5 +24,7 @@ private:
 	bool						_computed;
 	//sort the vector of names;
 	void AlphabeticSort();
+	//helpers
 	bool IsLetters(std::string name);
+	std::string NameToLower(std::string s);
 };

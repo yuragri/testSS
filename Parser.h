@@ -16,6 +16,7 @@ enum Requests
 	cmPrintScores,
 	cmHelp
 };
+//Parse request(not only for ScoreContainer in future)
 class Parser
 {
 public:

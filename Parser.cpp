@@ -102,7 +102,7 @@ void Parser::PrintHelp()
 {
 	std::cout << "Available requsts:" << std::endl;
 	std::cout << "\"q\" or \"quit\" or \"exit\" to quit the program." << std::endl;
-	std::cout << "\"read_file file_name\" to add names from file" << std::endl;
+	std::cout << "\"read_file file_name\" to add names from file to the list" << std::endl;
 	std::cout << "\"new_name NAME1 NAME2...s\" to add one or more names" << std::endl;
 	std::cout << "\"print_list: \" to show list of names" << std::endl;
 	std::cout << "\"compute_score\" to show general score" << std::endl;
